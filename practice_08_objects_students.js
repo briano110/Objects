@@ -99,15 +99,15 @@ console.log(createStudent("Sam", 10, 2.9));
 
 function findByName(students, targetName) {
   // TODO: use .find() to search by name
-  const name = [{ students: students }];
+  return students.find((fart) => fart.name === targetName) || null;
   // Hint: .find() returns undefined if nothing matches — convert that to null using || (or) operator
 }
 
 // Test your function — uncomment when ready:
 // console.log("\n--- Problem 3 ---");
-// console.log(findByName(students, "ChenZee"));
-// console.log(findByName(students, "Jane"));
-// console.log(findByName(students, "Marcus"));
+console.log(findByName(students, "ChenZee"));
+console.log(findByName(students, "Jane"));
+console.log(findByName(students, "Marcus"));
 
 // =================================================================
 // PROBLEM 4 — Roster Report
@@ -124,12 +124,16 @@ function findByName(students, targetName) {
 
 function printRoster(students) {
   // TODO: loop through students with .forEach()
+
+  students.forEach((fart) =>
+    console.log(fart.grade + " " + fart.name + " - GPA: " + fart.gpa),
+  );
   // TODO: print each student in the format above
 }
 
 // Test your function — uncomment when ready:
 // console.log("\n--- Problem 4 ---");
-// printRoster(students);
+console.log(printRoster(students));
 
 // =================================================================
 // PROBLEM 5 — Object Inspector
