@@ -1,10 +1,15 @@
 function HappyPaca(N, X) {
-  let happy = [];
-  for (let i = 0; i <= N; i++) {
-    if ((happy[i] + happy[i + 1]) % 2 === 0) {
-      happy.push(i + 1);
-    }
-  for (let i = 1; i <= N; i++) {
+  let happy = 0;
+  let index = [2];
+
+  for (let i = 0; i < N - 1; i++) {
+    if (happy < X) {
+      index.push(index[i]);
+      happy++;
+    } else index.push(index[i] + 1);
+    index.push(1);
   }
+
+  return index;
 }
-console.log(HappyPaca(2, 2));
+console.log(HappyPaca(7, 4));
