@@ -1,6 +1,6 @@
 function Data(X, N, monthly) {
   let og = X;
-  for (i = 0; i < N; i++) {
+  for (let i = 0; i < N; i++) {
     X = X - monthly[i] + og;
   }
 
