@@ -3,8 +3,12 @@ function Duals(X, N, duals) {
   let users = 1;
   for (let i = 0; i < N; i++) {
     if (duals[i * 2 + 1] === X) {
-      users++;
       X = duals[i * 2];
+
+      if (!wizards.includes(X)) {
+        users++;
+      }
+      wizards.push(X);
     }
   }
   return X + `\n` + users;
