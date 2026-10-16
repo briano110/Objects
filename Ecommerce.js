@@ -42,20 +42,38 @@ spinners = [
   },
 ];
 //Filter what products are shown with button clicks (clicks added later!)
-const Plastic = spinners.filter((item) => item.category === "Plastic");
-const Metal = spinners.filter((item) => item.category === "Metal");
-const Glow = spinners.filter((item) => item.category === "Glow");
-const Novelty = spinners.filter((item) => item.category === "Novelty");
-
-// console.log(Glow);
-function AddCart(ids) { 
-for (i=0; ids.length
-
+function Sortbycategory(category) {
+  const Plastic = spinners.filter((item) => item.category === "Plastic");
+  const Metal = spinners.filter((item) => item.category === "Metal");
+  const Glow = spinners.filter((item) => item.category === "Glow");
+  const Novelty = spinners.filter((item) => item.category === "Novelty");
+  if (category === `Plastic`) return Plastic;
+  else if (category === `Metal`) return Metal;
+  else if (category === `Glow`) return Glow;
+  else if (category === `Novelty`) return Novelty;
 }
-
-
 //Allow users to add to a cart
+cart = [];
+quan = [];
+
+function Addcart(id, quantity) {
+  cart.push(spinners.find((smart) => smart.id === id) || null);
+  quan.push(quantity);
+  let name = spinners[id - 1].name;
+  return `You have added the spinner ${name}(id ${id}) to your cart with a quantity of ${quantity}`;
+}
+console.log(Addcart(5, 2));
+console.log(Addcart(3, 1));
+//console.log(cart);
+//console.log(quan);
+
 //Remove Items from cart
+function Removecart(id) {
+  cart = cart.filter((hi) => hi.id !== id);
+  return cart;
+}
+console.log(Removecart(5));
+
 //Provide users a total for their purchase
 //*Later
 //All items shown and filtered on screen
