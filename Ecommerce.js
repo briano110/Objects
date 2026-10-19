@@ -51,19 +51,27 @@ function Sortbycategory(category) {
   else if (category === `Metal`) return Metal;
   else if (category === `Glow`) return Glow;
   else if (category === `Novelty`) return Novelty;
+  else return "Product not found";
 }
 //Allow users to add to a cart
 cart = [];
-quan = [];
 
 function Addcart(id, quantity) {
-  cart.push(spinners.find((smart) => smart.id === id) || null);
-  quan.push(quantity);
-  let name = spinners[id - 1].name;
-  return `You have added the spinner ${name}(id ${id}) to your cart with a quantity of ${quantity}`;
+  // cart.push(spinners.find((smart) => smart.id === id) || null);
+  const spinner = spinners.find((index) => index.id == id);
+
+  if (!spinner) return "Product not found";
+
+const index = cart.findIndex(item => item.id === id);
+if (index)
+  else cart.push({ id: id, quantity: quantity });
+
+  Title = spinners.name;
+
+  return `You have added the spinner ${Title}(id ${id}) to your cart with a quantity of ${quantity}`;
 }
 console.log(Addcart(5, 2));
-console.log(Addcart(3, 1));
+// console.log(Addcart(3, 1));
 //console.log(cart);
 //console.log(quan);
 
@@ -72,7 +80,8 @@ function Removecart(id) {
   cart = cart.filter((hi) => hi.id !== id);
   return cart;
 }
-console.log(Removecart(5));
+
+// console.log(Removecart(5));
 
 //Provide users a total for their purchase
 //*Later
