@@ -1,44 +1,108 @@
 //Create a list of at least 20 items to sell
 spinners = [
-  { id: 1, name: "Standerd", cost: 3.99, category: "Plastic" },
-  { id: 2, name: "Dual-Bar Spinner", cost: 9.99, category: "Metal" },
-  { id: 3, name: "Light-Up Spinner ", cost: 5.99, category: "Glow" },
-  { id: 4, name: "Glow-in-the-Dark Spinner ", cost: 6.99, category: "Glow" },
-  { id: 5, name: "Aluminum Tri-Spinner ", cost: 11.99, category: "Metal" },
-  { id: 6, name: "Brass Metal Spinner ", cost: 19.99, category: "Metal" },
-  { id: 7, name: "Titanium EDC Spinner ", cost: 29.99, category: "Metal" },
-  { id: 8, name: "Zirconium Spinner ", cost: 39.99, category: "Metal" },
+  { id: 1, name: "Standard", cost: 3.99, category: "Plastic", stock: 10 },
+  { id: 2, name: "Dual-Bar Spinner", cost: 9.99, category: "Metal", stock: 10 },
+  { id: 3, name: "Light-Up Spinner ", cost: 5.99, category: "Glow", stock: 10 },
+  {
+    id: 4,
+    name: "Glow-in-the-Dark Spinner ",
+    cost: 6.99,
+    category: "Glow",
+    stock: 10,
+  },
+  {
+    id: 5,
+    name: "Aluminum Tri-Spinner ",
+    cost: 11.99,
+    category: "Metal",
+    stock: 10,
+  },
+  {
+    id: 6,
+    name: "Brass Metal Spinner ",
+    cost: 19.99,
+    category: "Metal",
+    stock: 10,
+  },
+  {
+    id: 7,
+    name: "Titanium EDC Spinner ",
+    cost: 29.99,
+    category: "Metal",
+    stock: 10,
+  },
+  {
+    id: 8,
+    name: "Zirconium Spinner ",
+    cost: 39.99,
+    category: "Metal",
+    stock: 10,
+  },
   {
     id: 9,
     name: "Transformable Robot Spinner ",
     cost: 8.99,
     category: "Novelty",
+    stock: 10,
   },
-  { id: 10, name: "Planetary Gear Spinner", cost: 7.99, category: "Novelty" },
+  {
+    id: 10,
+    name: "Planetary Gear Spinner",
+    cost: 7.99,
+    category: "Novelty",
+    stock: 10,
+  },
   {
     id: 11,
     name: "Custom-Button  Spinner ",
     cost: 4.99,
     category: "Plastic",
+    stock: 10,
   },
-  { id: 12, name: "Chain Spinner", cost: 9.99, category: "Novelty" },
-  { id: 13, name: "Captain America Shield Spinner ", cost: 6.99 },
-  { id: 14, name: "Holographic  Spinner", cost: 12.99, category: "Glow" },
-  { id: 15, name: "Pop-it Spinner", cost: 3.99, category: "Plastic" },
-  { id: 16, name: "Micro Spinner", cost: 4.99, category: "Plastic" },
-  { id: 17, name: "Table Spinner ", cost: 11.99, category: "Novelty" },
+  { id: 12, name: "Chain Spinner", cost: 9.99, category: "Novelty", stock: 10 },
+  { id: 13, name: "Captain America Shield Spinner ", cost: 6.99, stock: 10 },
+  {
+    id: 14,
+    name: "Holographic  Spinner",
+    cost: 12.99,
+    category: "Glow",
+    stock: 10,
+  },
+  {
+    id: 15,
+    name: "Pop-it Spinner",
+    cost: 3.99,
+    category: "Plastic",
+    stock: 10,
+  },
+  { id: 16, name: "Micro Spinner", cost: 4.99, category: "Plastic", stock: 10 },
+  {
+    id: 17,
+    name: "Table Spinner ",
+    cost: 11.99,
+    category: "Novelty",
+    stock: 10,
+  },
   {
     id: 18,
     name: "Carnival Style Spinner ",
     cost: 7.99,
     category: "Plastic",
+    stock: 10,
   },
-  { id: 19, name: "Magnetic Haptic Spinner", cost: 15.99, category: "Metal" },
+  {
+    id: 19,
+    name: "Magnetic Haptic Spinner",
+    cost: 15.99,
+    category: "Metal",
+    stock: 10,
+  },
   {
     id: 20,
     name: "Suction Cup Baby Spinner ",
     cost: 2.99,
     category: "Plastic",
+    stock: 10,
   },
 ];
 //Filter what products are shown with button clicks (clicks added later!)
@@ -54,8 +118,28 @@ function Sortbycategory(category) {
   else return "Product not found";
 }
 //Allow users to add to a cart
-cart = [];
-
+const cart = { Standard: { name: "Standard", cost: 3.99, qty: 1 } };
+function addtocart(item) {
+  if (cart[item.name]) {
+    cart[item.name].qty++;
+  } else {
+    cart[item.name] = item;
+  }
+}
+addtocart({ name: "Standard", cost: 3.99, qty: 1 });
+addtocart({ name: "Standard", cost: 3.99, qty: 1 });
+addtocart({ name: "Magnetic Haptic Spinner", cost: 15.99, qty: 1 });
+console.log(cart);
+function removecart(item) {
+  if (cart[item.name]) {
+    cart[item.name].qty--;
+  }
+  if (cart[item.qty] === 0) {
+  }
+}
+removecart({ name: "Standard", cost: 3.99, qty: 1 });
+console.log(cart);
+/*
 function Addcart(id, quantity) {
   // cart.push(spinners.find((smart) => smart.id === id) || null);
   const spinner = spinners.find((index) => index.id == id);
@@ -64,7 +148,7 @@ function Addcart(id, quantity) {
 
 const index = cart.findIndex(item => item.id === id);
 if (index)
-  else cart.push({ id: id, quantity: quantity });
+  else {cart.push({ id: id, quantity: quantity }); }
 
   Title = spinners.name;
 
@@ -87,3 +171,4 @@ function Removecart(id) {
 //*Later
 //All items shown and filtered on screen
 //Shopping cart with add/remove buttons and total order price
+*/
