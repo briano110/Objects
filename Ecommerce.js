@@ -130,45 +130,21 @@ addtocart({ name: "Standard", cost: 3.99, qty: 1 });
 addtocart({ name: "Standard", cost: 3.99, qty: 1 });
 addtocart({ name: "Magnetic Haptic Spinner", cost: 15.99, qty: 1 });
 console.log(cart);
+//Allow users to remove items from cart
 function removecart(item) {
   if (cart[item.name]) {
     cart[item.name].qty--;
   }
-  if (cart[item.qty] === 0) {
+  if (cart[item.name].qty <= 0) {
+    delete cart[item.name];
   }
 }
 removecart({ name: "Standard", cost: 3.99, qty: 1 });
 console.log(cart);
-/*
-function Addcart(id, quantity) {
-  // cart.push(spinners.find((smart) => smart.id === id) || null);
-  const spinner = spinners.find((index) => index.id == id);
 
-  if (!spinner) return "Product not found";
-
-const index = cart.findIndex(item => item.id === id);
-if (index)
-  else {cart.push({ id: id, quantity: quantity }); }
-
-  Title = spinners.name;
-
-  return `You have added the spinner ${Title}(id ${id}) to your cart with a quantity of ${quantity}`;
-}
-console.log(Addcart(5, 2));
-// console.log(Addcart(3, 1));
-//console.log(cart);
-//console.log(quan);
-
-//Remove Items from cart
-function Removecart(id) {
-  cart = cart.filter((hi) => hi.id !== id);
-  return cart;
-}
-
-// console.log(Removecart(5));
-
-//Provide users a total for their purchase
-//*Later
-//All items shown and filtered on screen
-//Shopping cart with add/remove buttons and total order price
-*/
+// Total
+const Total = Object.values(cart).reduce(
+  (sum, item) => sum + item.pirce * item.qty,
+  0,
+);
+console.log(Total);
